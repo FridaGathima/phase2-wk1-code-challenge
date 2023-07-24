@@ -11,7 +11,7 @@ function AddNewTransaction () {
    const [amount, setAmount] = useState("")
 
    function handleNewTransaction(e) {
-        e.preventDefault()
+        // e.preventDefault()
     
         const newTransaction = {
             date,

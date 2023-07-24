@@ -11,13 +11,14 @@ function AllTransactions() {
             .then(data => setData(data))
     }, [])
 
-    function handleDelete() {
-        fetch("http://localhost:3000/transactions", {
-            method: 'DELETE',
-        }).then(() => {
-            console.log('delete transaction')
-        })
-        
+    function handleDelete(id) {
+        // fetch("http://localhost:3000/transactions", {
+        //     method: 'DELETE',
+        // }).then(() => {
+        //     console.log('delete transaction')
+        // })
+        const newDeletedList = transactionList.filter((transactions) => transactions.id !== id)
+        setData(newDeletedList)
     }
     return (
         <div className="alltransactionstable">
@@ -38,7 +39,7 @@ function AllTransactions() {
                             <td> {transactions.description}</td>
                             <td> {transactions.category}</td>
                             <td> {transactions.amount}</td>
-                           <td> <button onClick={handleDelete} >Delete</button></td>
+                           <td> <button onClick={() => handleDelete(transactions.id)} >Delete</button></td>
                         </tr>
                     })}
                 </tbody>
